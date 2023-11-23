@@ -1,5 +1,3 @@
-@import url(root.css);
-
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +17,7 @@
   position: relative;
 }
 
-nav a {
+header a {
   color: white !important;
 }
 
@@ -29,8 +27,20 @@ nav a {
   backdrop-filter: blur(16.5px);
 }
 
+main {
+  background-image: url("../images/panoramic-skyline-buildings-with-empty-concrete-square-floor.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
 @media (max-width:992px) {
-  label[id="menuIcon"] {
+  .sm-overflow-hidden {
+    overflow: hidden;
+  }
+
+  div[id="menuIcon"] {
     width: 30px;
     height: 24px;
     cursor: pointer;
@@ -40,9 +50,11 @@ nav a {
     flex-direction: column;
     z-index: 5;
     align-items: center;
+    z-index: 4;
+    position: relative;
   }
 
-  label[id="menuIcon"]>span {
+  div[id="menuIcon"]>span {
     width: 100%;
     height: 5px;
     background: white;
@@ -50,26 +62,28 @@ nav a {
 
   .menuList {
     flex-direction: column !important;
-    justify-content: center;
-    align-items: center;
     top: 0;
     bottom: 0;
     right: -100%;
-    position: fixed;
+    position: absolute;
     opacity: 1;
     max-width: 400px;
     width: 100%;
     min-height: 100vh;
-    /* background: rgb(0 0 0 / 0.3); */
-    background: red;
+    background: rgba(251, 253, 255, 0.01);
     z-index: 3;
     box-shadow: 0px 0px 19px 9px rgba(0, 0, 0, 0.10);
     transition: all 500ms linear;
     backdrop-filter: blur(10px);
+    z-index: 3;
   }
 
   .menuList.show {
     right: 0;
   }
 
+  nav:has(ul.menuList.show) {
+    right: 0;
+    backdrop-filter: unset !important;
+  }
 }
